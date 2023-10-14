@@ -72,7 +72,9 @@ def main():
     
 
     window.mainloop()
-    print("Acabou")
+    print("Acabou soncronizado")
+    
+    
 
 if __name__ == '__main__':
     main()
