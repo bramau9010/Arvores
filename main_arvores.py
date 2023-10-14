@@ -41,6 +41,7 @@ def main():
         canvas.delete("all")  # Clear previous drawings
         canvas.create_image(0, 0, anchor=tk.NW, image=arvore)
         
+        
 
     window = tk.Tk()
 

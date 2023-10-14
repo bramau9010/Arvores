@@ -46,12 +46,14 @@ class ArvoreWidget(ttk.Widget):
 def main():
 
     def plotar():
-        # TODO: fazer voltar a funcionar
+        
         tree,root = arvore_widget.get()
         arvore = tree.plot_tree(root)
+
+        return arvore
         # Draw the plot on the canvas
-        canvas.delete("all")  # Clear previous drawings
-        canvas.create_image(0, 0, anchor=tk.NW, image=arvore)
+        # canvas.delete("all")  # Clear previous drawings
+        # canvas.create_image(0, 0, anchor=tk.NW, image=arvore)
         
 
     window = tk.Tk()
@@ -66,8 +68,8 @@ def main():
     button.pack()
 
     # Create a Canvas widget to display the plot
-    canvas = tk.Canvas(mainframe, width=400, height=400)
-    canvas.pack()
+    #canvas = tk.Canvas(mainframe, width=400, height=400)
+    #canvas.pack()
 
     
 
