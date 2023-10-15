@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+
+
 import random
 
 
@@ -104,35 +106,68 @@ class Tree:
         self.inverse(node)  # Assuming you want to start inversion from the selected node down
         
         return root
+    
+    # def _plot_node(self, ax, node, x=0, y=0, dx=1, dy=1):
 
+    #     if (node.left) and (node.left):
+    #         ax.plot([x, x - dx], [y, y - dy], 'k-')
+    #         ax.text(x - dx*0.1, y, str(node.data), ha='center',
+    #                 va='center', bbox=dict(facecolor='white', edgecolor='black'), rotation=25)
 
+    #         self._plot_node(ax, node.left, x - dx, y - dy, dx*0.5, dy)
 
+    #         ax.plot([x, x + dx], [y, y - dy], 'k-')
+    #         ax.text(x + dx*0.1, y, str(node.data), ha='center',
+    #                 va='center', bbox=dict(facecolor='white', edgecolor='black'), rotation=25)
+    #         self._plot_node(ax, node.right, x + dx, y - dy, dx*0.5, dy)
+
+        
+    #     elif (node.left) and (node.right is None):
+    #         ax.plot([x, x - dx], [y, y - dy], 'k-')
+    #         ax.text(x - dx*0.1, y, str(node.data), ha='center',
+    #                 va='center', bbox=dict(facecolor='white', edgecolor='black'), rotation=25)
+
+    #         self._plot_node(ax, node.left, x - dx, y - dy, dx*0.5, dy)
+            
+    #     elif (node.left is None) and (node.right):
+    #         ax.plot([x, x + dx], [y, y - dy], 'k-')
+    #         ax.text(x + dx*0.1, y, str(node.data), ha='center',
+    #                 va='center', bbox=dict(facecolor='white', edgecolor='black'), rotation=25)
+    #         self._plot_node(ax, node.right, x + dx, y - dy, dx*0.5, dy)
+
+    #     elif node.left is None and node.right is None:
+    #         ax.text(x, y, str(node.data), ha='center', va='center',
+    #                 bbox=dict(facecolor='white', edgecolor='black'))
 
 
             
-    def _plot_node(self, ax, node, x=0, y=0, dx=1, dy=1):
+    def _plot_node(self, ax, node, x=0, y=0, dx=2, dy=1):
+        
         if node.left:
             ax.plot([x, x - dx], [y, y - dy], 'k-')
-            ax.text(x - dx*0.1, y, str(node.data), ha='center',
+            ax.text(x , y, str(node.data), ha='center',
                     va='center', bbox=dict(facecolor='white', edgecolor='black'), rotation=25)
 
-            self._plot_node(ax, node.left, x - dx, y - dy, dx*0.5, dy)
+            self._plot_node(ax, node.left, x - dx, y - dy, dx*0.7, dy)
+
         if node.right:
             ax.plot([x, x + dx], [y, y - dy], 'k-')
-            ax.text(x + dx*0.1, y, str(node.data), ha='center',
+            ax.text(x , y, str(node.data), ha='center',
                     va='center', bbox=dict(facecolor='white', edgecolor='black'), rotation=25)
-            self._plot_node(ax, node.right, x + dx, y - dy, dx*0.5, dy)
+            self._plot_node(ax, node.right, x + dx, y - dy, dx*0.7, dy)
 
         if node.left is None and node.right is None:
             ax.text(x, y, str(node.data), ha='center', va='center',
-                    bbox=dict(facecolor='white', edgecolor='black'))
+                    bbox=dict(facecolor='white', edgecolor='black'), rotation=25)
 
             
     def plot_tree(self, root):
         fig, ax = plt.subplots(figsize=(8, 6))
         self._plot_node(ax, root)
         plt.axis('off')
-        plt.show()
+        
+        return fig
+        
 
         
     '''Cria uma árvore de maneira aleatoria, vai inseriendo um por vez'''

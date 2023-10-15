@@ -1,9 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
 
-
 from arvores import Tree
 from arvores import Node
+import matplotlib.pyplot as plt
+
 
 VALID_ARVORES = [
     "Pequeno", "Medio", "Grande"
@@ -46,14 +47,16 @@ class ArvoreWidget(ttk.Widget):
 def main():
 
     def plotar():
-        
-        tree,root = arvore_widget.get()
+        global image  # Use the global image variable
+        tree, root = arvore_widget.get()
         arvore = tree.plot_tree(root)
+        plt.savefig("arvore.png")
 
-        return arvore
-        # Draw the plot on the canvas
-        # canvas.delete("all")  # Clear previous drawings
-        # canvas.create_image(0, 0, anchor=tk.NW, image=arvore)
+        # Display the image on the canvas
+        canvas.delete("all")  # Clear previous drawings
+        image = tk.PhotoImage(file="arvore.png")
+        canvas.create_image(0, 0, anchor=tk.NW, image=image)
+        # label.config(image=image)  # Update the label with the new image
         
 
     window = tk.Tk()
@@ -68,8 +71,8 @@ def main():
     button.pack()
 
     # Create a Canvas widget to display the plot
-    #canvas = tk.Canvas(mainframe, width=400, height=400)
-    #canvas.pack()
+    canvas = tk.Canvas(mainframe, width=400, height=400)
+    canvas.pack()
 
     
 
